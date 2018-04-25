@@ -13,9 +13,9 @@ LOCALVERSION_var-som-mx6 = "-mx6"
 LOCALVERSION_imx6ul-var-dart = "-mx6ul"
 LOCALVERSION_imx7-var-som = "-mx7"
 
-SRCBRANCH = "imx_4.9.11_1.0.0_ga-var01"
-SRCREV = "c178e1cef4ae85dd8a1b648546b71db5e2893e2d"
-KERNEL_SRC ?= "git://github.com/varigit/linux-imx.git;protocol=git"
+SRCBRANCH = "imx_4.9.11_1.0.0_ga-var01-ag"
+SRCREV = "dd6af79e5a92d996f0d91b0d4f026678af9add38"
+KERNEL_SRC ?= "git://github.com/Autogramma/linux-imx.git;protocol=git"
 SRC_URI = "${KERNEL_SRC};branch=${SRCBRANCH}"
 
 DEFAULT_PREFERENCE = "1"
