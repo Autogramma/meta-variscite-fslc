@@ -19,8 +19,8 @@ if [[ -e ${YOCTO_ROOT}b2qt-init-build-env ]] ; then
 	readonly YOCTO_DEFAULT_IMAGE=b2qt-embedded-qt5-image
 else
 	readonly BSP_TYPE="YOCTO"
-	readonly YOCTO_BUILD=${YOCTO_ROOT}/build_x11
-	readonly YOCTO_DEFAULT_IMAGE=fsl-image-gui
+	readonly YOCTO_BUILD=${YOCTO_ROOT}/build
+	readonly YOCTO_DEFAULT_IMAGE=core-image-base
 fi
 echo "BSP type: ${BSP_TYPE}"
 
@@ -101,6 +101,7 @@ if [[ $EUID -ne 0 ]] ; then
 fi
 
 if [[ $MACHINE == var-som-mx6 ]] ; then
+	echo MEOW
 	FAT_VOLNAME=BOOT-VARMX6
 elif [[ $MACHINE == imx6ul-var-dart ]] ; then
 	FAT_VOLNAME=BOOT-VAR6UL
@@ -261,7 +262,7 @@ function install_yocto
 {
 	echo
 	echo "Installing Yocto Boot partition"
-	cp ${YOCTO_IMGS_PATH}/?Image-imx*.dtb		${P1_MOUNT_DIR}/
+	cp ${YOCTO_RECOVERY_ROOTFS_PATH}/?Image-ag-imx6q-var-som.dtb	${P1_MOUNT_DIR}/imx6q-var-som-res.dtb
 	rename 's/.Image-//' ${P1_MOUNT_DIR}/?Image-*
 
 	pv ${YOCTO_IMGS_PATH}/?Image >			${P1_MOUNT_DIR}/`cd ${YOCTO_IMGS_PATH}; ls ?Image`
@@ -278,7 +279,7 @@ function copy_images
 	echo "Copying Yocto images to /opt/images/"
 	mkdir -p ${P2_MOUNT_DIR}/opt/images/Yocto
 
-	cp ${YOCTO_RECOVERY_ROOTFS_PATH}/?Image-imx*.dtb		${P2_MOUNT_DIR}/opt/images/Yocto/
+	cp ${YOCTO_RECOVERY_ROOTFS_PATH}/?Image-ag-imx6q-var-som.dtb		${P2_MOUNT_DIR}/opt/images/Yocto/imx6q-var-som-res.dtb
 	rename 's/.Image-//' ${P2_MOUNT_DIR}/opt/images/Yocto/?Image-*
 
 	cp ${YOCTO_RECOVERY_ROOTFS_PATH}/?Image				${P2_MOUNT_DIR}/opt/images/Yocto/
