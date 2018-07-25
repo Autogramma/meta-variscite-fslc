@@ -1,0 +1,1 @@
+FILES_mtd-utils-ubifs += " ${sbindir}/nandwrite ${sbindir}/flash_erase"
