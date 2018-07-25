@@ -360,8 +360,8 @@ create_parts
 format_parts
 install_bootloader
 mount_parts
-install_yocto
-copy_images
+# install_yocto
+# copy_images
 copy_scripts
 
 echo
