@@ -1,0 +1,5 @@
+#!/bin/sh
+
+export FLASH="true"
+
+exec /bin/login -p -f root
